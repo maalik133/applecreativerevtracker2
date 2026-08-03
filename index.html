@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="$750 Apple Cash promotional landing page." />
+  <title>$750 Apple Cash</title>
+  <style>
+    :root {
+      --black: #080808;
+      --text: #111111;
+      --muted: #6f7078;
+      --line: #e6e6eb;
+      --panel: #ffffff;
+      --page: #f8f8fa;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: var(--page);
+    }
+
+    body { padding: 34px 18px 54px; }
+
+    .shell {
+      width: min(100%, 680px);
+      margin: 0 auto;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 26px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 7vw, 54px);
+      line-height: 1.05;
+      letter-spacing: -1.8px;
+      font-weight: 800;
+    }
+
+    .subtitle {
+      margin: 18px 0 0;
+      font-size: clamp(18px, 4.4vw, 30px);
+      line-height: 1.35;
+      color: var(--muted);
+    }
+
+    .card-wrap {
+      margin-top: 30px;
+      border-radius: 28px;
+      overflow: hidden;
+    }
+
+    .card-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .cta {
+      display: block;
+      width: 100%;
+      text-align: center;
+      text-decoration: none;
+      margin-top: 28px;
+      border: 0;
+      border-radius: 24px;
+      padding: 26px 24px;
+      background: var(--black);
+      color: #fff;
+      font-size: clamp(22px, 4.5vw, 32px);
+      line-height: 1;
+      font-weight: 750;
+      cursor: pointer;
+      transition: transform .15s ease, opacity .15s ease;
+    }
+
+    .cta:active { transform: scale(.99); }
+    .cta:hover { opacity: .94; }
+
+    .cta .arrow {
+      display: inline-block;
+      margin-left: 16px;
+      font-size: 1.2em;
+      transform: translateY(1px);
+    }
+
+    .how {
+      margin-top: 44px;
+    }
+
+    .how-title {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 0 0 26px;
+      font-size: clamp(30px, 5vw, 42px);
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .check {
+      width: 48px;
+      height: 48px;
+      border: 3px solid #111;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      line-height: 1;
+      flex: 0 0 auto;
+    }
+
+    .steps {
+      display: grid;
+      gap: 18px;
+    }
+
+    .step {
+      min-height: 136px;
+      display: grid;
+      grid-template-columns: 78px 1fr 48px;
+      gap: 20px;
+      align-items: center;
+      padding: 24px 26px;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: var(--panel);
+      box-shadow: 0 1px 2px rgba(0,0,0,.03);
+    }
+
+    .icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: #fafafa;
+      font-size: 28px;
+    }
+
+    .step h3 {
+      margin: 0;
+      font-size: clamp(20px, 4vw, 29px);
+      line-height: 1.18;
+    }
+
+    .step p {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: clamp(16px, 3.4vw, 23px);
+      line-height: 1.35;
+    }
+
+    .num {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #000;
+      color: #fff;
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 26px;
+      background: rgba(0,0,0,.54);
+      backdrop-filter: blur(6px);
+      z-index: 20;
+    }
+
+    .overlay.open { display: flex; }
+
+    .modal {
+      position: relative;
+      width: min(100%, 720px);
+      background: #fff;
+      border-radius: 36px;
+      padding: 54px 44px 42px;
+      box-shadow: 0 24px 80px rgba(0,0,0,.28);
+    }
+
+    .close {
+      position: absolute;
+      top: 28px;
+      right: 30px;
+      border: 0;
+      background: transparent;
+      color: #6f7078;
+      font-size: 52px;
+      line-height: .8;
+      cursor: pointer;
+    }
+
+    .modal h2 {
+      margin: 0 58px 18px 0;
+      max-width: 560px;
+      font-size: clamp(34px, 6vw, 52px);
+      line-height: 1.08;
+      letter-spacing: -1.6px;
+    }
+
+    .modal-copy {
+      margin: 0 0 36px;
+      color: var(--muted);
+      font-size: clamp(20px, 4vw, 29px);
+      line-height: 1.35;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .field.email { grid-column: 1 / -1; }
+
+    label {
+      display: block;
+      margin-bottom: 11px;
+      font-size: clamp(18px, 3.7vw, 25px);
+      font-weight: 700;
+    }
+
+    input {
+      width: 100%;
+      height: 82px;
+      border: 2px solid #ddddE4;
+      border-radius: 20px;
+      padding: 0 24px;
+      font-size: clamp(19px, 3.6vw, 26px);
+      outline: none;
+      background: #fff;
+    }
+
+    input:focus {
+      border-color: #111;
+      box-shadow: 0 0 0 3px rgba(0,0,0,.08);
+    }
+
+    .continue {
+      width: 100%;
+      margin-top: 28px;
+      border: 0;
+      border-radius: 24px;
+      padding: 25px;
+      background: #090909;
+      color: #fff;
+      font-size: clamp(22px, 4.4vw, 31px);
+      font-weight: 750;
+      cursor: pointer;
+    }
+
+    .continue:disabled {
+      background: #b9bac1;
+      cursor: not-allowed;
+    }
+
+    .fine {
+      margin: 25px 0 0;
+      text-align: center;
+      color: #a2a3ab;
+      font-size: clamp(16px, 3.2vw, 22px);
+      line-height: 1.35;
+    }
+
+    @media (max-width: 620px) {
+      body { padding: 28px 16px 44px; }
+      .card-wrap { border-radius: 22px; }
+      .cta { border-radius: 20px; padding: 23px 20px; }
+      .step {
+        grid-template-columns: 62px 1fr 42px;
+        gap: 14px;
+        padding: 20px 18px;
+        border-radius: 22px;
+      }
+      .icon { width: 54px; height: 54px; }
+      .num { width: 42px; height: 42px; }
+      .overlay { padding: 16px; align-items: center; }
+      .modal {
+        border-radius: 30px;
+        padding: 50px 24px 32px;
+      }
+      .close { top: 24px; right: 22px; font-size: 44px; }
+      .form-grid { gap: 18px 14px; }
+      input { height: 68px; padding: 0 18px; border-radius: 17px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <h1>$750 Apple Cash</h1>
+      <p class="subtitle">Complete simple tasks &amp; get rewarded instantly</p>
+
+      <div class="card-wrap">
+        <img src="apple-cash-card.png" alt="$750 Apple Cash gift card" />
+      </div>
+
+      <a class="cta" href="https://linkthem.net/aff_c?offer_id=2596&aff_id=170653">
+        Get Started <span class="arrow">→</span>
+      </a>
+    </section>
+
+    <section class="how">
+      <h2 class="how-title"><span class="check">✓</span> How It Works</h2>
+
+      <div class="steps">
+        <article class="step">
+          <div class="icon" aria-hidden="true">✉</div>
+          <div>
+            <h3>Enter your email address</h3>
+            <p>For notifications and rewards</p>
+          </div>
+          <div class="num">1</div>
+        </article>
+
+        <article class="step">
+          <div class="icon" aria-hidden="true">▯</div>
+          <div>
+            <h3>Complete 2–3 simple offers</h3>
+            <p>The more you do, the more you earn</p>
+          </div>
+          <div class="num">2</div>
+        </article>
+
+        <article class="step">
+          <div class="icon" aria-hidden="true">▭</div>
+          <div>
+            <h3>Receive your Apple Cash reward</h3>
+            <p>Sent directly to your account</p>
+          </div>
+          <div class="num">3</div>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
